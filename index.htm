@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>培训课程</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<script type="text/javascript" src="js/func.js"></script>
+<script type="text/javascript" src="js/info.js"></script>
+<body style="background-color:#2e2e2e;">
+<div class="main">
+<div class="series" id="series"></div>
+<div id="leftmenu"> 
+<script type="text/javascript">
+	document.getElementById("leftmenu").className="leftmenu";
+</script>
+<dl>
+</dl>
+</div>
+<div class="maincnt" id="maincnt">
+<div class="bg1"><div class="showpath" id="showpath"></div></div>
+<div class="videocnt" id="videocnt"></div>
+
+</div>
+</div>
+<script type="text/javascript">
+oDl1=document.getElementsByTagName("dl")[0];
+var arrLeftColumnName=new Array();
+var arrLeftFileName=new Array();
+for(i=0;i<arrLeftMenu.length;i++){
+	var sLeftColumnName=arrLeftMenu[i].split("-")[0];
+	var sLeftFileName=arrLeftMenu[i].split("-")[1];
+	arrLeftColumnName.push(sLeftColumnName);
+	arrLeftFileName.push(sLeftFileName);
+	}
+for(var i=0;i<arrLeftMenu.length;i++){
+	var j=i+1;
+	var oChildMenu=eval("arrLeftChildName"+j)
+	if(oChildMenu){
+		var strChildLi="";
+		var strChildDiv="";
+		for(var k=0; k<oChildMenu.length; k++){
+			var m=k+1;
+			strChildLi=strChildLi+"<li onclick=showcnt(this,"+j+","+m+",'second','l') title="+oChildMenu[k]+">"+oChildMenu[k]+"</li>";
+			strChildDiv="<div class=submenu><ul>"+strChildLi+"</ul></div>";
+		}
+	}
+	else{
+			strChildDiv=""
+	};
+	oDl1.innerHTML=oDl1.innerHTML+"<dd class=myh1><a style='background-image:url(images/ct.png)' onclick=showcnt(this,"+j+",'0','top','l')>"+arrLeftColumnName[i]+"<\/a>"+strChildDiv+"<\/dd>";
+};
+
+var oA1=oDl1.getElementsByTagName("dd")[0].getElementsByTagName("a")[0];
+var patharea = document.getElementById("showpath");
+var oldFlag=1;
+var oldlorr="l";
+</script>
+</body>
+</html>
